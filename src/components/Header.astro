@@ -1,0 +1,20 @@
+---
+import { landingContent, defaultQuizId } from "../data/landingContent";
+---
+
+<nav class='py-4 sm:py-[26px] shadow-primary'>
+  <ul class='justify-between flex gap-[33px] container sm:justify-end'>
+    {
+      Object.values(landingContent).map((quiz) => (
+        <li>
+          <a
+            href={quiz.id === defaultQuizId ? "/" : `/${quiz.id}`}
+            class='s1 h-12 flex items-center justify-center px-1 sm:px-4'
+          >
+            {quiz.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

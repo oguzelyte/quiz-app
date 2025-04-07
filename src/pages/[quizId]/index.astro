@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import QuizLandingLayout from "../../layouts/QuizLandingLayout.astro";
+import { landingContent, defaultQuizId } from "../../data/landingContent";
+import type { QuizId } from "../../data/constants";
+
+export async function getStaticPaths() {
+  return Object.keys(landingContent).map((id) => ({
+    params: { quizId: id },
+  }));
+}
+
+const quizId = (Astro.params.quizId ?? defaultQuizId) as QuizId;
+const quiz = landingContent[quizId];
+---
+
+<Layout
+  title={quiz.title}
+  theme={quiz.theme}
+>
+  <QuizLandingLayout quiz={quiz} />
+</Layout>

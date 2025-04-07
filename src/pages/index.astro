@@ -1,0 +1,19 @@
+---
+import QuizLandingLayout from "../layouts/QuizLandingLayout.astro";
+import {
+  landingContent,
+  defaultQuizId,
+  type QuizId,
+} from "../data/landingContent";
+import Layout from "../layouts/Layout.astro";
+
+const quizId = (Astro.params.quizId ?? defaultQuizId) as QuizId;
+const quiz = landingContent[quizId];
+---
+
+<Layout
+  title={quiz.title}
+  theme={quiz.theme}
+>
+  <QuizLandingLayout quiz={quiz} />
+</Layout>

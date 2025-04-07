@@ -1,0 +1,57 @@
+---
+import Button from "./ui/Button";
+import { subjects } from "../data/landingContent.ts";
+
+const { quiz } = Astro.props;
+---
+
+<div class='container py-10 sm:py-[120px]'>
+  <div class='max-w-[805px] mx-auto text-center mb-8 lg:mb-11'>
+    <h2 class='mb-4'>
+      {quiz.landingContentTitle}
+    </h2>
+    <p class='s2'>
+      {quiz.landingContentText}
+    </p>
+  </div>
+
+  <div
+    class='flex max-lg:flex-col flex-wrap max-w-[994px] mx-auto gap-3 lg:gap-[30px]'
+  >
+    {
+      subjects.map((subject, index) => {
+        const isFirst = index === 0;
+        const isLast = index === subjects.length - 1;
+        const isOdd = index % 2 !== 0;
+
+        return (
+          <div
+            class={`${isFirst ? "lg:ml-[26px]" : ""} ${isLast ? "lg:max-w-[49.7%]" : "lg:max-w-[47.1%]"} ${isOdd ? "lg:translate-y-[53px]" : ""} mx-auto max-w-[500px] bg-cyan-600 break-inside-avoid max-lg:justify-between gap-3 h-[174px] lg:h-[238px] w-full relative border border-[#0000000D] max-lg:pr-3 pl-[22px] lg:pl-[30px] flex overflow-hidden rounded-[1.25rem]`}
+          >
+            <div class='z-10 w-max max-w-[270px] min-w-[150px] lg:min-w-[210px] lg:max-w-[278px] self-center'>
+              <h3 class='mb-3'>{subject.title}</h3>
+              <p class='s3'>{subject.description}</p>
+            </div>
+
+            <div
+              class={`${isLast ? "max-lg:h-auto max-lg:max-w-[110px] self-start" : "self-center max-lg:h-full"}`}
+            >
+              <img
+                src={subject.image.src}
+                alt={subject.title}
+                class='h-full w-full object-contain'
+              />
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <div class='mt-10 lg:mt-[113px] flex justify-center'>
+    <Button
+      href={`/quiz/${quiz.id}`}
+      text={quiz.cta}
+    />
+  </div>
+</div>

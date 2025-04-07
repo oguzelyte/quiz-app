@@ -1,0 +1,35 @@
+---
+import { quizzes } from "../../data/quizContent.ts"; // path based on your setup
+import Quiz from "../../components/Quiz.tsx"; // your React quiz component
+import {
+  defaultQuizId,
+  landingContent,
+  type QuizId,
+} from "../../data/landingContent";
+import Layout from "../../layouts/Layout.astro";
+
+const quizId = (Astro.params.quizId ?? defaultQuizId) as QuizId;
+const quizData = quizzes[quizId];
+const quiz = landingContent[quizId];
+
+if (!quizData) {
+  return Astro.redirect("/404", 302);
+}
+
+export async function getStaticPaths() {
+  return Object.keys(landingContent).map((id) => ({
+    params: { quizId: id },
+  }));
+}
+---
+
+<Layout
+  title={quiz.title}
+  theme={quiz.theme}
+>
+  <Quiz
+    quizId={quizId}
+    quiz={quizData}
+    client:load
+  />
+</Layout>

@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+
+@import "tailwindcss";
+
+@layer base {
+  /* Themes */
+
+  :root {
+    --btn-height: 3.5rem;
+    --btn-text-size: 1.125rem;
+    --hover-bg: theme(colors.gray.600);
+    --color-theme-primary: theme(colors.gray.200);
+  }
+
+  /* Misc */
+
+  html {
+    @apply font-primary;
+  }
+
+  .container {
+    @apply mx-auto px-4 max-w-[1200px];
+  }
+
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  .transition-font-weight-bg {
+    transition-property: font-weight, background-color, border;
+    transition-duration: 300ms;
+  }
+
+  /* Fonts */
+
+  .s1 {
+    @apply font-medium text-sm sm:text-base tracking-[0] text-neutral-0;
+  }
+
+  .s2 {
+    @apply font-normal text-lg leading-[26px] tracking-[0] text-neutral-50;
+  }
+
+  .s3 {
+    @apply font-normal text-[13px] sm:text-lg leading-[100%] tracking-[0] text-neutral-0 opacity-60;
+  }
+
+  .s4 {
+    @apply font-medium text-base sm:text-lg leading-[22px] tracking-[0] text-neutral-0;
+  }
+
+  h1 {
+    @apply font-secondary font-bold text-[32px] leading-[100%] sm:text-[56px] sm:leading-[120%] tracking-[0] text-neutral-0;
+  }
+
+  h2 {
+    @apply font-secondary font-bold text-[32px] leading-[100%] sm:text-[56px] sm:leading-[120%] tracking-[0] text-neutral-0;
+  }
+
+  h3 {
+    @apply font-secondary font-bold text-[22px] sm:text-[30px] leading-[100%] tracking-[0] text-neutral-0;
+  }
+}
+
+.theme-orange {
+  --btn-height: clamp(3rem, -0.2px + 0.047 * 100vw, 3.5rem);
+  --btn-text-size: clamp(1rem, -0.2px + 0.047 * 100vw, 1.125rem);
+  --hover-bg: theme(colors.orange.600);
+  --color-theme-primary: theme(colors.orange.200);
+}
+
+.theme-green {
+  --btn-height: clamp(2.5rem, -0.2px + 0.047 * 100vw, 3rem);
+  --btn-text-size: clamp(0.875rem, -0.2px + 0.047 * 100vw, 1rem);
+  --hover-bg: theme(colors.lime.600);
+  --color-theme-primary: theme(colors.lime.200);
+}
+
+.theme-blue {
+  --btn-height: clamp(2rem, -0.2px + 0.047 * 100vw, 2.5rem);
+  --btn-text-size: clamp(0.75rem, -0.2px + 0.047 * 100vw, 0.875rem);
+  --hover-bg: theme(colors.cyan.600);
+  --color-theme-primary: theme(colors.cyan.200);
+}
+
+@theme {
+  /* Fonts */
+  --font-primary: "Figtree", sans-serif;
+  --font-secondary: "Aleo", sans-serif;
+
+  /* Shadow */
+  --shadow-primary: 0px 4px 20px rgba(0, 0, 0, 0.05);
+
+  /* Background */
+  --color-background-primary: #faf8f4;
+
+  /* Orange */
+  --color-orange-0: #a04107;
+  --color-orange-50: #c24f09;
+  --color-orange-100: #ea600b;
+  --color-orange-200: #ee7b35;
+  --color-orange-300: #f19258;
+  --color-orange-400: #f5b48d;
+  --color-orange-500: #fad1b8;
+  --color-orange-600: #fae7da;
+
+  /* Lime */
+  --color-lime-0: #889200;
+  --color-lime-50: #a5b100;
+  --color-lime-100: #c8d600;
+  --color-lime-200: #d2dd2c;
+  --color-lime-300: #dae350;
+  --color-lime-400: #e6ec87;
+  --color-lime-500: #f1f4bb;
+  --color-lime-600: #f5f7d0;
+
+  /* Cyan */
+  --color-cyan-0: #185faf;
+  --color-cyan-50: #1d72d4;
+  --color-cyan-100: #1091e6;
+  --color-cyan-200: #53b3f2;
+  --color-cyan-300: #95d0f7;
+  --color-cyan-400: #c4e5fa;
+  --color-cyan-500: #d2ebfa;
+  --color-cyan-600: #ecf8fe;
+
+  /* Neutral */
+  --color-neutral-0: #111111;
+  --color-neutral-50: #3b3b3b;
+  --color-neutral-100: #909090;
+  --color-neutral-200: #cbcbcb;
+  --color-neutral-300: #e7e7e7;
+  --color-neutral-400: #f2f2f2;
+  --color-neutral-500: #fcfcfc;
+  --color-neutral-600: #ffffff;
+}
+
+@layer components {
+  .btn-primary {
+    @apply transition cursor-pointer duration-300 inline-flex items-center gap-3 max-sm:justify-center w-full sm:w-fit px-[18px] bg-neutral-0 text-white rounded-[100px] disabled:opacity-60 disabled:pointer-events-none;
+
+    height: var(--btn-height);
+    font-size: var(--btn-text-size);
+
+    &:hover {
+      background: var(--color-theme-primary);
+    }
+  }
+
+  .quiz-option {
+    @apply border-neutral-300;
+
+    &:hover {
+      background-color: var(--hover-bg);
+    }
+    &:active {
+      border-color: var(--color-theme-primary);
+    }
+  }
+
+  .text-primary {
+    color: var(--color-theme-primary);
+  }
+
+  .bg-primary {
+    background: var(--color-theme-primary);
+  }
+
+  .border-primary {
+    border-color: var(--color-theme-primary);
+  }
+}

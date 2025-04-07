@@ -1,0 +1,23 @@
+---
+import Button from "./ui/Button";
+const { quiz } = Astro.props;
+---
+
+<div class='py-10 sm:py-[134px] bg-background-primary'>
+  <div
+    class='max-w-[717px] container flex flex-col sm:items-center sm:text-center'
+  >
+    <h1
+      class='mb-4'
+      set:html={quiz.heroTitle}
+    />
+    <p
+      class='mb-4 sm:mb-8 s2'
+      set:html={quiz.heroText}
+    />
+    <Button
+      href={`/quiz/${quiz.id}`}
+      text={quiz.cta}
+    />
+  </div>
+</div>
