@@ -4,6 +4,23 @@ This is a lightweight, responsive quiz web app built using **Astro**, **React**,
 
 The app stores answers in `localStorage`, uses mock data, and focuses on clean structure, scalability, and simplicity – making it easy to expand or adapt in the future.
 
+**App is hosted on Vercel, URL found in About section.**
+
+## Running Locally
+
+Make sure you have [Node.js](https://nodejs.org/) installed.
+
+```
+# 1. Clone the repo
+git clone <repo-name>
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the development server
+npm run dev
+```
+
 ## Project Goals
 
 - Build a smooth and responsive quiz experience.
