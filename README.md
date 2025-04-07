@@ -1,48 +1,59 @@
-# Astro Starter Kit: Basics
+# Quiz App (Astro + React + Tailwind)
 
-```sh
-npm create astro@latest -- --template basics
-```
+This is a lightweight, responsive quiz web app built using **Astro**, **React**, and **Tailwind CSS**. It supports multiple quizzes like _Time Management_, _Productivity_, and _Sleep Management_, each with its own landing page and a separate quiz flow.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+The app stores answers in `localStorage`, uses mock data, and focuses on clean structure, scalability, and simplicity – making it easy to expand or adapt in the future.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project Goals
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- Build a smooth and responsive quiz experience.
+- Use **Astro** for fast, modern frontend architecture.
+- Style with **Tailwind CSS** for rapid and maintainable UI.
+- Keep everything modular and scalable so we can easily support 100+ quizzes.
+- Focus more on learning and good structure than on pixel-perfect visuals or full edge case coverage.
 
-## 🚀 Project Structure
+## Tech Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Astro** - for fast rendering and flexible component architecture.
+- **React** - handles interactive quiz logic and UI.
+- **Tailwind CSS** - utility-first styling for speed and consistency.
+- **Vercel** - for hosting.
+- **React Icons** - for icons.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Structure & Scalability
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Each quiz includes:
 
-## 🧞 Commands
+- A landing page at `/quiz-name` (e.g., `/time-management`) using shared layout components.
+- A quiz flow managed by React that renders questions, collects answers, and displays results.
 
-All commands are run from the root of the project, from a terminal:
+## Can it scale to 100+ quizzes?
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Yes – and it already does. The current setup includes:
 
-## 👀 Want to learn more?
+- A central `quizContent.ts` file that holds all quiz content in one place.
+- A dynamic `quiz/[quizId].astro` route that loads the correct quiz based on the URL slug.
+- Shared layout and logic components (`QuizLandingLayout`, `QuestionBlock`, etc.) that dynamically adapt to the quiz data.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This means adding a new quiz is as easy as updating the quiz content file - no need to duplicate routes or logic. The architecture is already optimized for scalability and reusability.
+
+## Reusability & Replication
+
+The current structure already avoids duplication:
+
+- Shared UI components (buttons, cards, etc.).
+- Shared React logic to manage question flow and result calculation.
+
+## Features Implemented
+
+- ✅ Three quizzes with unique landing pages
+- ✅ Fully responsive layout using Tailwind
+- ✅ Answer storage in `localStorage` - past questions saved and reflected so they show when user goes backward
+- ✅ Modular file structure with reusable components
+
+## Room for Improvement
+
+- **External Data**: Move from mock data to CMS or API-based structure. Save quiz data to db or send to analytics or 3rd party CRM.
+- **Better State Management**: For more complex logic, consider Zustand or similar.
+- **Deeper Result Logic**: Right now, results are static – these could be personalized.
+- **A11y & Transitions**: Add animations and improve accessibility for keyboard/screen reader use.
